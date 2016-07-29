@@ -1,0 +1,23 @@
+# OS files
+.DS_Store
+[Tt]humbs.db
+
+# User-specifc configs
+.idea
+*.iml
+
+# Gradle files
+.gradle
+
+# Generated files
+bin/
+gen/
+
+# Android binary files
+build/
+*.apk
+*.ap_
+*.dex
+
+# Local config file
+local.properties
