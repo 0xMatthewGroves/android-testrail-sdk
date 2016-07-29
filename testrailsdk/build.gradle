@@ -1,0 +1,55 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+    useLibrary 'org.apache.http.legacy'
+
+    defaultConfig {
+        applicationId "com.frostrocket.testrailsdk"
+        minSdkVersion 19
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+
+    compile 'com.googlecode.json-simple:json-simple:1.1'
+    compile group: 'org.apache.httpcomponents' , name: 'httpclient-android' , version: '4.3.5.1'
+}
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'android-testrail-sdk'
+
+    publishedGroupId = 'com.frostrocket.testrailsdk'
+
+    artifact = 'testrailsdk'
+
+    libraryName = 'android-testrail-sdk'
+    libraryDescription = 'android-testrail-sdk is an Android library used to publish, edit, or update test infrastructure using TestRail APIs.'
+    libraryVersion = '1.0'
+
+    siteUrl = 'https://github.com/frostrocket/android-testrail-sdk'
+    gitUrl = 'https://github.com/frostrocket/android-testrail-sdk.git'
+
+    developerId = 'frostrocket'
+    developerName = 'Matthew Groves'
+    developerEmail = 'frostrocket@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+apply from: "install.gradle"
+apply from: "bintray.gradle"
