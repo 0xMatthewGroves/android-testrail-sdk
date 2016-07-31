@@ -9,8 +9,10 @@ Usage:
 
 TestRail testRail = new TestRail(URL, USER, PASSWORD);
 
-URL = [https://test.corp.<company>.com/"] // Accepts both HTTP and HTTPS URLs
+URL = [https://test.corp.yourcompany.com/"] // Accepts both HTTP and HTTPS URLs
+
 USER = [TestRail User]
+
 PASSWORD = [TestRail Password/API Key]
 
 The following methods are supported:
