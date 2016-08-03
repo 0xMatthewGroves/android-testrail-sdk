@@ -6,9 +6,9 @@ android {
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 10
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.2"
     }
     buildTypes {
         release {
@@ -36,7 +36,7 @@ ext {
 
     libraryName = 'android-testrail-sdk'
     libraryDescription = 'android-testrail-sdk is an Android library used to publish, edit, or update test infrastructure using TestRail APIs.'
-    libraryVersion = '1.0'
+    libraryVersion = '1.0.2'
 
     siteUrl = 'https://github.com/frostrocket/android-testrail-sdk'
     gitUrl = 'https://github.com/frostrocket/android-testrail-sdk.git'

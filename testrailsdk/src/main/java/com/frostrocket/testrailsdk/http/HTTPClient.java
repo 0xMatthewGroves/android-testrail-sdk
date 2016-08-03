@@ -15,12 +15,13 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
 import java.io.BufferedReader;
+import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 
-public class HTTPClient implements AutoCloseable {
+public class HTTPClient implements Closeable {
 
     private static final String API_ENDPOINT_PATH = "index.php?/api/v2/";
     private static final String DEFAULT_CHARSET = "UTF-8";
@@ -126,14 +127,14 @@ public class HTTPClient implements AutoCloseable {
 
         // process response data
         StringBuilder sb = new StringBuilder(1024);
-        try (InputStream is = response.getEntity().getContent()) {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(is, DEFAULT_CHARSET));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                sb.append(line).append(LINE_SEPARATOR);
-            }
-            reader.close();
+        InputStream is = response.getEntity().getContent();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is, DEFAULT_CHARSET));
+        String line;
+
+        while ((line = reader.readLine()) != null) {
+            sb.append(line).append(LINE_SEPARATOR);
         }
+        reader.close();
 
         // parse the full text response as JSON object
         Object result;
